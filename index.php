@@ -1,3 +1,6 @@
+<?php
+include "submit.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,11 +23,35 @@
     </style>
 </head>
 <body>
+<?php
+        if (isset($error_message)) {
+        ?>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error Message!</strong> <?= $error_message ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+    
+        <?php
+        }
+        ?>
+        <?php
+        if (isset($success_message)) {
+        ?>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success Message!</strong> <?= $success_message ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+    
+        <?php
+        }
+        ?>
     <div class="container py-4">
+        
+
         <div class="mb-3 text-start">
             <p class="register-now">Register</p>
         </div>
-        <form action="submit.php" method="post" class="bg-white shadow-lg rounded-lg px-4 pt-4 pb-4 mb-4">
+        <form action="" method="post" class="bg-white shadow-lg rounded-lg px-4 pt-4 pb-4 mb-4">
             <div class="mb-3">
                 <label for="username" class="form-label fw-bold">Username</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
