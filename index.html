@@ -13,6 +13,10 @@
         .rounded-lg {
             border-radius: 20px;
         }
+        .btn{
+            padding: 10px 25px;
+            font-size: 15px;
+        }
     </style>
 </head>
 <body>
@@ -20,21 +24,21 @@
         <div class="mb-3 text-start">
             <p class="register-now">Register</p>
         </div>
-        <form class="bg-white shadow-lg rounded-lg px-4 pt-4 pb-4 mb-4">
+        <form action="submit.php" method="post" class="bg-white shadow-lg rounded-lg px-4 pt-4 pb-4 mb-4">
             <div class="mb-3">
                 <label for="username" class="form-label fw-bold">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label fw-bold">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label fw-bold">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
             </div>
             <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-primary">Sign Up</button>
+                <button class="btn btn-primary">Sign Up</button>
             </div>
         </form>
     </div>
