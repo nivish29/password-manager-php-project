@@ -24,6 +24,9 @@
     <button class="btn btn-primary px-4 py-2">
       Get Started
     </button>
+    <a href="logout.php" class="btn btn-danger mt-3 px-4 py-2">
+      Logout
+    </a>
   </div>
 </body>
 

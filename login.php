@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (isset($_SESSION['userId']) && $_SESSION['userId'] != '') {
+  header('Location: dashboard.php');
+  exit(); // Always use exit after header redirection
+}
+include "verifyLogin.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,11 +29,22 @@
     </style>
 </head>
 <body>
+<?php
+    if (isset($error_message)) {
+    ?>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Error Message!</strong> <?= $error_message ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <?php
+    }
+    ?>
     <div class="container py-4">
+        
         <div class="mb-3 text-start">
             <p class="register-now">Login</p>
         </div>
-        <form action="" method="" class="bg-white shadow-lg rounded-lg px-4 pt-4 pb-4 mb-4">
+        <form action="" method="post" class="bg-white shadow-lg rounded-lg px-4 pt-4 pb-4 mb-4">
             <div class="mb-3">
                 <label for="email" class="form-label fw-bold">Email</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
@@ -34,7 +54,7 @@
                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
             </div>
             <div class="d-flex justify-content-end">
-                <button class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary">Login</button>
             </div>
         </form>
     </div>
