@@ -98,7 +98,7 @@
               <td><?=$row['description']?></td>
               <td><span class="me-3" id="pwd-<?=$row['id']?>"><?=base64_encode($row['password'])?></span><i class="bi bi-eye-fill text-primary" onclick="viewPassword(<?=$row['id']?>,'<?=$row['password']?>')" style="cursor: pointer;"></i></td>
               <td>
-                <div class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updatePassword"><i class="bi bi-pencil-square"></i></div>
+              <div class="btn btn-primary btn-sm edit-password" data-id="<?= $row['id'] ?>" data-description="<?= htmlspecialchars($row['description']) ?>" data-password="<?= htmlspecialchars($row['password']) ?>" data-bs-toggle="modal" data-bs-target="#updatePassword"><i class="bi bi-pencil-square"></i></div>
                 <div class="btn btn-danger btn-sm delete-password" data-id="<?= $row['id'] ?>"><i class="bi bi-trash"></i></div>
               </td>
             </tr>
@@ -119,15 +119,15 @@
     $("#pwd-" + id).html(password)
   }
   $(document).ready(function() {
-    // $('.edit-password').on('click', function() {
-    //   var id = $(this).data('id');
-    //   var description = $(this).data('description');
-    //   var password = $(this).data('password');
+    $('.edit-password').on('click', function() {
+      var id = $(this).data('id');
+      var description = $(this).data('description');
+      var password = $(this).data('password');
 
-    //   $('#updateIdInput').val(id);
-    //   $('#updateDescriptionInput').val(description);
-    //   $('#updatePasswordInput').val(password);
-    // });
+      $('#updateIdInput').val(id);
+      $('#updateDescriptionInput').val(description);
+      $('#updatePasswordInput').val(password);
+    });
     $('#addCredientialsBtn').on('click', function() {
       var description = $('#addDescriptionInput').val();
       var password = $('#addPasswordInput').val();
@@ -170,49 +170,49 @@
       });
     });
 
-    // $('#updateCredientialsBtn').on('click', function() {
-    //   var id = $('#updateIdInput').val();
-    //   var description = $('#updateDescriptionInput').val();
-    //   var password = $('#updatePasswordInput').val();
+    $('#updateCredientialsBtn').on('click', function() {
+      var id = $('#updateIdInput').val();
+      var description = $('#updateDescriptionInput').val();
+      var password = $('#updatePasswordInput').val();
 
-    //   if (description == '' || password == '') {
-    //     Swal.fire({
-    //       icon: "error",
-    //       title: "Oops...",
-    //       text: "Please enter both description and password!",
-    //     });
-    //     return;
-    //   }
+      if (description == '' || password == '') {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Please enter both description and password!",
+        });
+        return;
+      }
 
-    //   $.ajax({
-    //     url: 'updatepassword.php',
-    //     type: 'POST',
-    //     data: {
-    //       id: id,
-    //       description: description,
-    //       password: password
-    //     },
-    //     success: function(response) {
-    //       Swal.fire({
-    //         position: "center",
-    //         icon: "success",
-    //         title: "Updated Successfully",
-    //         showConfirmButton: false,
-    //         timer: 1500
-    //       });
-    //       setTimeout(() => {
-    //         window.location.reload();
-    //       }, 1500);
-    //     },
-    //     error: function(jqXHR, textStatus, errorThrown) {
-    //       Swal.fire({
-    //         icon: "error",
-    //         title: "Oops...",
-    //         text: "Something went wrong!",
-    //       });
-    //     }
-    //   });
-    // });
+      $.ajax({
+        url: 'updatepassword.php',
+        type: 'POST',
+        data: {
+          id: id,
+          description: description,
+          password: password
+        },
+        success: function(response) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Updated Successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+          });
+        }
+      });
+    });
     $('.delete-password').on('click', function() {
       var id = $(this).data('id');
       Swal.fire({
