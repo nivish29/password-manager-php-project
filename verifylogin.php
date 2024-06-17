@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (password_verify($password, $hashed_password)) {
       // Create session variables
       $_SESSION['userId'] = $id;
-      header('Location: dashboard.php'); // Redirect to a dashboard or another page
+      header('Location: index.php'); // Redirect to a dashboard or another page
       exit();
     } else {
       $error_message = "Invalid email or password.";
