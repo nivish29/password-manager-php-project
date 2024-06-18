@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Check if the userId is set in the session
     if (!isset($userId)) {
-        echo "User not logged in.";
+        echo "User not logged in,Please check.";
         exit();
     }
 
